@@ -18,12 +18,19 @@
   },
   "homepage": "https://github.com/ArvinYang1925/iThome2025-node-ts#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "typeorm": "^0.3.27"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
     "@types/node": "^24.5.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.2"
+  },
+  "volta": {
+    "node": "20.17.0"
   }
 }
