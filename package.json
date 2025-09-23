@@ -1,0 +1,41 @@
+{
+  "name": "ithome2025-node-ts",
+  "version": "1.0.0",
+  "description": "30 天，讓 TypeScript 把你的 Node.js 開發再升級 (範例程式碼)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev src/app.ts",
+    "start": "node dist/app.js",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArvinYang1925/iThome2025-node-ts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArvinYang1925/iThome2025-node-ts/issues"
+  },
+  "homepage": "https://github.com/ArvinYang1925/iThome2025-node-ts#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "typeorm": "^0.3.27"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.5.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.2"
+  },
+  "volta": {
+    "node": "20.17.0"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}

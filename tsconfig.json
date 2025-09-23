@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",              // 用 ES2020 的 JavaScript 版本
+    "module": "commonjs",            // 用 CommonJS 模組
+    "outDir": "dist",               // 編譯輸出目錄
+    "rootDir": "src",               // 程式碼根目錄
+    "strict": true,                 // 啟用嚴格型別檢查
+    "esModuleInterop": true,        // 支援模組互操作
+    "experimentalDecorators": true,  // 啟用裝飾器語法
+    "emitDecoratorMetadata": true   // 為 TypeORM 生成元數據
+  },
+  "include": ["src/**/*"],          // 編譯 src 資料夾內的檔案
+  "exclude": ["node_modules"]       // 排除 node_modules
+}
