@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { AppDataSource } from "../config/db";
 import { Todo } from "../entities/Todo";
+import { createTodoSchema, updateTodoSchema } from "../validator/todoValidation";
 
 const todoRepository = AppDataSource.getRepository(Todo);
 
@@ -15,12 +16,13 @@ export async function getTodos(req: Request, res: Response, next: NextFunction):
 
 export async function createTodo(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
-    const { title } = req.body;
-    if (!title) {
-      res.status(400).json({ status: "error", message: "Title is required" });
+    const parsed = createTodoSchema.safeParse(req.body);
+    if (!parsed.success) {
+      res.status(400).json({ status: "failed", message: "標題過長或過短" });
       return;
     }
-    const newTodo = todoRepository.create({ title });
+
+    const newTodo = todoRepository.create({ title: parsed.data.title });
     const savedTodo = await todoRepository.save(newTodo);
     res.status(201).json({ status: "success", data: savedTodo });
   } catch (error) {
@@ -31,16 +33,22 @@ export async function createTodo(req: Request, res: Response, next: NextFunction
 export async function updateTodo(req: Request, res: Response, next: NextFunction): Promise<void> {
   try {
     const { id } = req.params;
-    const { title, completed } = req.body;
-    const todo = await todoRepository.findOneBy({ id });
+    const parsed = updateTodoSchema.safeParse(req.body);
 
+    if (!parsed.success) {
+      res.status(400).json({ status: "failed", message: "更新資料格式錯誤" });
+      return;
+    }
+
+    const todo = await todoRepository.findOneBy({ id });
     if (!todo) {
       res.status(404).json({ status: "error", message: "Todo not found" });
       return;
     }
 
-    todo.title = title !== undefined ? title : todo.title;
-    todo.completed = completed !== undefined ? completed : todo.completed;
+    todo.title = parsed.data.title ?? todo.title;
+    todo.completed = parsed.data.completed ?? todo.completed;
+
     const updatedTodo = await todoRepository.save(todo);
     res.json({ status: "success", data: updatedTodo });
   } catch (error) {
