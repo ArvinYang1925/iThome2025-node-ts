@@ -24,16 +24,20 @@
   },
   "homepage": "https://github.com/ArvinYang1925/iThome2025-node-ts#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.16.3",
     "typeorm": "^0.3.27",
     "zod": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.5.2",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",

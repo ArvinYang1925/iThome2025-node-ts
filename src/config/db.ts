@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Todo } from "../entities/Todo";
+import { User } from "../entities/User";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -13,7 +14,7 @@ export const AppDataSource = new DataSource({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   ssl: { rejectUnauthorized: false },
-  entities: [Todo],
+  entities: [Todo, User],
   synchronize: true, // 開發階段建議 true，正式環境請改成 false
   logging: true,
 });
