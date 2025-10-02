@@ -5,11 +5,16 @@ import todoRoutes from "./routes/todoRoutes";
 import authRoutes from "./routes/authRoutes";
 import uploadRoutes from "./routes/uploadRoutes";
 import dotenv from "dotenv";
+import logger from "./utils/logger"; // 導入 logger
+import pinoHttp from "pino-http";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+// 添加 HTTP logger 中間件（放在其他路由之前）
+app.use(pinoHttp({ logger }));
 
 app.use("/api/todos", todoRoutes); // 加上 Todo 路由
 app.use("/api/auth", authRoutes);
