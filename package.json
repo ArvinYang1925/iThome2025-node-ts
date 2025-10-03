@@ -10,7 +10,11 @@
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts}\"",
     "lint": "eslint \"src/**/*.ts\"",
-    "lint:fix": "eslint \"src/**/*.ts\" --fix"
+    "lint:fix": "eslint \"src/**/*.ts\" --fix",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/config/db.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/db.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/config/db.ts",
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/config/db.ts"
   },
   "repository": {
     "type": "git",

@@ -19,6 +19,9 @@ export class User {
   @Column({ name: "profile_url", length: 2048, nullable: true })
   profileUrl?: string;
 
+  @Column({ type: "varchar", length: 10, nullable: true })
+  phone?: string;
+
   @CreateDateColumn({ name: "created_at" })
   createdAt!: Date;
 

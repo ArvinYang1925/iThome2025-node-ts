@@ -15,6 +15,8 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   ssl: { rejectUnauthorized: false },
   entities: [Todo, User],
-  synchronize: true, // 開發階段建議 true，正式環境請改成 false
+  synchronize: false, // ⚠️ 改為 false，改用 migration 管理
   logging: true,
+  migrations: ["src/migrations/**/*.ts"], // 📁 migration 檔案路徑
+  migrationsTableName: "migrations_history", // 📊 migration 歷史記錄表名稱
 });
