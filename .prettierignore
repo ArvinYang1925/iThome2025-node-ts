@@ -44,3 +44,5 @@ uploads/
 *.sqlite
 *.sql
 *.dump
+
+src/migrations/**/*.ts 

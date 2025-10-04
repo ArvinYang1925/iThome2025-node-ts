@@ -6,6 +6,10 @@ const tsPlugin = require("@typescript-eslint/eslint-plugin");
 
 module.exports = [
   {
+    // 新增：忽略 migrations 資料夾
+    ignores: ["src/migrations/**/*.ts"],
+  },
+  {
     files: ["**/*.ts"], // 檢查 .ts 檔案
     languageOptions: {
       parser: tsParser, // 用 TypeScript 的解析器
