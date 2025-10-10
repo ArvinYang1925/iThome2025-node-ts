@@ -17,6 +17,6 @@ export const AppDataSource = new DataSource({
   entities: [Todo, User],
   synchronize: false, // ⚠️ 改為 false，改用 migration 管理
   logging: true,
-  migrations: ["src/migrations/**/*.ts"], // 📁 migration 檔案路徑
+  migrations: process.env.NODE_ENV === "production" ? [__dirname + "/../migrations/*.js"] : ["src/migrations/**/*.ts"], // 📁 migration 檔案路徑
   migrationsTableName: "migrations_history", // 📊 migration 歷史記錄表名稱
 });
